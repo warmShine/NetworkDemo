@@ -1,0 +1,39 @@
+{
+  "name": "UXIN_AFNetWork",
+  "version": "0.0.2",
+  "summary": "UXIN_AFNetWork of UX",
+  "description": "UXIN_AFNetWork init and connect to UXIN_AFNetWork",
+  "license": {
+    "type": "BSD"
+  },
+  "homepage": "www.xin.com",
+  "authors": {
+    "wangning": "wangning5@xin.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "resources": "Resources/*.{bundle,png,jpg,jpeg}",
+  "source": {
+    "git": "http://git.xin.com/ios_publib/UXIN_AFNetWork.git",
+    "tag": "0.0.1"
+  },
+  "source_files": [
+    "src",
+    "src/*.{h,m,mm,cpp,c}",
+    "src/**/*.{h,m,mm,cpp,c,bundle}"
+  ],
+  "public_header_files": [
+    "src/*.h",
+    "src/**/*.h"
+  ],
+  "requires_arc": true,
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "$(SDKROOT)/usr/include"
+  },
+  "dependencies": {
+    "AFNetworking": [
+      "3.1.0"
+    ]
+  }
+}
