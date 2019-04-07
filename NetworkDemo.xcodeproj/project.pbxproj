@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		081EDCFC223CE9770013FDB9 /* FirstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 081EDCFB223CE9770013FDB9 /* FirstVC.m */; };
-		081EDCFF223CF22C0013FDB9 /* APICommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 081EDCFE223CF22C0013FDB9 /* APICommand.m */; };
 		0854A71F221D32EB006C6B32 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0854A71E221D32EB006C6B32 /* AppDelegate.m */; };
 		0854A722221D32EB006C6B32 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0854A721221D32EB006C6B32 /* ViewController.m */; };
 		0854A725221D32EB006C6B32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0854A723221D32EB006C6B32 /* Main.storyboard */; };
@@ -20,6 +19,7 @@
 		0854A752221D348A006C6B32 /* APINetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0854A751221D348A006C6B32 /* APINetManager.m */; };
 		0857A2EF22252437002904D8 /* NetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0857A2EE22252437002904D8 /* NetConfig.m */; };
 		0857A2F222252D52002904D8 /* APINetConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0857A2F122252D52002904D8 /* APINetConfig.m */; };
+		08A52E472259D6FD001A6DA0 /* APINetCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A52E462259D6FD001A6DA0 /* APINetCommand.m */; };
 		ADF8B7F1CC253804171640E6 /* libPods-NetworkDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDCDD07FC0C326943C3660A /* libPods-NetworkDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +43,6 @@
 /* Begin PBXFileReference section */
 		081EDCFA223CE9770013FDB9 /* FirstVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstVC.h; sourceTree = "<group>"; };
 		081EDCFB223CE9770013FDB9 /* FirstVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstVC.m; sourceTree = "<group>"; };
-		081EDCFD223CF22C0013FDB9 /* APICommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APICommand.h; sourceTree = "<group>"; };
-		081EDCFE223CF22C0013FDB9 /* APICommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APICommand.m; sourceTree = "<group>"; };
 		081EDD00223CF7D40013FDB9 /* APICommandProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APICommandProtocol.h; sourceTree = "<group>"; };
 		0854A71A221D32EB006C6B32 /* NetworkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0854A71D221D32EB006C6B32 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +67,8 @@
 		0857A2F022252D52002904D8 /* APINetConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APINetConfig.h; sourceTree = "<group>"; };
 		0857A2F122252D52002904D8 /* APINetConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APINetConfig.m; sourceTree = "<group>"; };
 		0857A2F3222550C1002904D8 /* APIParamsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIParamsProtocol.h; sourceTree = "<group>"; };
+		08A52E452259D6FD001A6DA0 /* APINetCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APINetCommand.h; sourceTree = "<group>"; };
+		08A52E462259D6FD001A6DA0 /* APINetCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APINetCommand.m; sourceTree = "<group>"; };
 		08F6FE6A223CFF840033D508 /* APIDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIDefine.h; sourceTree = "<group>"; };
 		18789D58DC22E2630D1B5BF3 /* Pods-NetworkDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkDemo/Pods-NetworkDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		7FADD66034B1CF59B5A3E5E6 /* Pods-NetworkDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-NetworkDemo/Pods-NetworkDemo.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,10 +170,10 @@
 				0857A2F022252D52002904D8 /* APINetConfig.h */,
 				0857A2F122252D52002904D8 /* APINetConfig.m */,
 				0857A2F3222550C1002904D8 /* APIParamsProtocol.h */,
-				081EDCFD223CF22C0013FDB9 /* APICommand.h */,
-				081EDCFE223CF22C0013FDB9 /* APICommand.m */,
 				081EDD00223CF7D40013FDB9 /* APICommandProtocol.h */,
 				08F6FE6A223CFF840033D508 /* APIDefine.h */,
+				08A52E452259D6FD001A6DA0 /* APINetCommand.h */,
+				08A52E462259D6FD001A6DA0 /* APINetCommand.m */,
 			);
 			path = APINet;
 			sourceTree = "<group>";
@@ -349,7 +349,7 @@
 			files = (
 				0857A2EF22252437002904D8 /* NetConfig.m in Sources */,
 				081EDCFC223CE9770013FDB9 /* FirstVC.m in Sources */,
-				081EDCFF223CF22C0013FDB9 /* APICommand.m in Sources */,
+				08A52E472259D6FD001A6DA0 /* APINetCommand.m in Sources */,
 				0854A722221D32EB006C6B32 /* ViewController.m in Sources */,
 				0854A72D221D32ED006C6B32 /* main.m in Sources */,
 				0854A752221D348A006C6B32 /* APINetManager.m in Sources */,

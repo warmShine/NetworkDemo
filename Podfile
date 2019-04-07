@@ -5,8 +5,6 @@ local_path = '/Users/fenglei/Desktop/NetworkDemo'
 
 target 'NetworkDemo' do  
     
-    #pod 'AFNetworking'
-    pod 'YTKNetwork'
+    pod 'AFNetworking'
 
-    pod 'UXIN_AFNetWork', :path => "/Users/fenglei/Desktop/NetworkDemo/UXIN_AFNetWork"
 end

@@ -10,6 +10,7 @@
 #import "FirstVC.h"
 
 #import "APINetConfig.h"
+#import "APINetManager.h"
 
 @interface AppDelegate ()
 
@@ -37,9 +38,9 @@
 }
 
 - (void)setNetworkConfig {
-//    APINetConfig *config1 = [[APINetConfig alloc]initWithBaseUrl:@"http://www.baidu.com"];
+    APINetConfig *config1 = [[APINetConfig alloc]initWithBaseUrl:@"https://www.baidu.com"];
 //    APINetConfig *config2 = [[APINetConfig alloc]initWithBaseUrl:@"https://www.news.baidu.com"];
-//    [[API sharedInstance] setNetConfig:config1];
+    [[APINetManager sharedInstance] setNetConfig:config1];
 //    [[API2 sharedInstance] setNetConfig:config2];
     
 }

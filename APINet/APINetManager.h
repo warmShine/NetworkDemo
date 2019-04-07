@@ -30,10 +30,25 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)requestWithFailure:(long)code message:(NSString *)message;
 @end
 
+/**接口成功block
+ *code 接口返回code
+ *message 接口提示信息
+ *data 接口返回内容
+ */
+typedef void(^ResponseFinished)(long code,NSString * _Nullable message,id data);
+
+/**接口失败block
+ *code 接口返回code
+ *message 接口提示信息
+ */
+typedef void(^ResponseFailed)(long code, NSString *message);
 
 
 @interface APINetManager : NSObject
 
+
+@property (nonatomic, copy) ResponseFinished responseSuccessBlock;
+@property (nonatomic, copy) ResponseFailed responseFailBlock;
 
 @property (nonatomic, strong) id<APIParamsProtocol> netConfig;
 
@@ -42,12 +57,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-- (void)addCommand:(id<APICommandProtocol>)command;
-
 - (NSTimeInterval)requestTimeoutInterval;/*超时时间*/
 
 - (void)setAPINetConfig:(id<APIParamsProtocol>)config;/*挂载配置器*/
 
+
+
++ (void)APIRequestPath:(NSString *)path
+                 param:(nullable NSDictionary *)params
+               success:(ResponseFinished)success
+                  fail:(ResponseFailed)fail;
 
 /**发送请求方法
  * path     url
@@ -57,8 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
  * success  成功回调
  * fail     失败回调
  */
-+ (void)APIRequestUrl:(NSString *)baseUrl
-                 path:(NSString *)path
++ (void)APIRequestPath:(NSString *)path
                 param:(nullable NSDictionary *)params
               options:(APIRequestOptions)option
                method:(APIRequestMethod)method

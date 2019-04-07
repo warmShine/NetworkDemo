@@ -55,33 +55,25 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
     self.netConfig = config;
 }
 
-- (void)addCommand:(id<APICommandProtocol>)command {
-    
-    
-    
-    
-    APINetManager APIRequestUrl:<#(nonnull NSString *)#> path:<#(nonnull NSString *)#> param:<#(nullable NSDictionary *)#> options:<#(APIRequestOptions)#> method:<#(APIRequestMethod)#> success:<#^(long code, NSString * _Nonnull message, id  _Nonnull response)successBlock#> fail:<#^(long code, NSString * _Nonnull message)failBlock#>
-}
-
 /**
  请求默认缓存类型为NET 请求类型为POST方法
 
  @param path url path
  @param params url params
- @param successBlock 成功回调
- @param failBlock 失败回调
+ @param success 成功回调
+ @param fail 失败回调
  */
-//+ (void)APIRequest:(NSString *)path
-//             param:(nullable NSDictionary *)params
-//           success:(ResponseFinished)successBlock
-//              fail:(ResponseFailed)failBlock {
-//    [self APIRequest:path
-//               param:params
-//             options:APIRequestOptions_NET
-//              method:API_Get
-//             success:successBlock
-//                fail:failBlock];
-//}
++ (void)APIRequestPath:(NSString *)path
+                 param:(nullable NSDictionary *)params
+               success:(ResponseFinished)success
+                  fail:(ResponseFailed)fail {
+    [self APIRequestPath:path
+               param:params
+             options:APIRequestOptions_NET
+              method:API_POST
+             success:success
+                fail:fail];
+}
 
 /**
  请求默认类型为POST类型
@@ -92,18 +84,18 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
  @param successBlock 成功回调
  @param failBlock 失败回调
  */
-//+ (void)APIRequest:(NSString *)path
-//             param:(nullable NSDictionary *)params
-//           options:(APIRequestOptions)option
-//           success:(ResponseFinished)successBlock
-//              fail:(ResponseFailed)failBlock {
-//        [self APIRequest:path
-//                   param:params
-//                 options:option
-//                  method:API_POST
-//                 success:successBlock
-//                    fail:failBlock];
-//}
++ (void)APIRequest:(NSString *)path
+             param:(nullable NSDictionary *)params
+           options:(APIRequestOptions)option
+           success:(ResponseFinished)successBlock
+              fail:(ResponseFailed)failBlock {
+        [self APIRequestPath:path
+                   param:params
+                 options:option
+                  method:API_POST
+                 success:successBlock
+                    fail:failBlock];
+}
 
 /**
  请求的基类方法 （所有请求最后都是实现此方法）
@@ -115,8 +107,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
  @param successBlock 成功回调
  @param failBlock 失败回调
  */
-+ (void)APIRequestUrl:(NSString *)baseUrl
-                 path:(NSString *)path
++ (void)APIRequestPath:(NSString *)path
                 param:(NSDictionary *)params
               options:(APIRequestOptions)option
                method:(APIRequestMethod)method
@@ -134,10 +125,10 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
  @param successBlock 成功回调
  @param failBlock 失败回调
  */
-//- (void)setSuccessBlock:(ResponseFinished)successBlock failBlock:(ResponseFailed)failBlock{
-//    self.responseSuccessBlock = successBlock;
-//    self.responseFailBlock = failBlock;
-//}
+- (void)setSuccessBlock:(ResponseFinished)successBlock failBlock:(ResponseFailed)failBlock{
+    self.responseSuccessBlock = successBlock;
+    self.responseFailBlock = failBlock;
+}
 
 /**
  请求实际方法
@@ -194,7 +185,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
     switch (method) {
         case API_Get:
         {
-            [self.manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.manager GET:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf handleSuccessResponse:responseObject];
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -207,7 +198,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             break;
         case API_POST:
         {
-            [self.manager POST:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.manager POST:url parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf handleSuccessResponse:responseObject];
 
@@ -222,7 +213,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             break;
         case API_PUT:
         {
-            [self.manager PUT:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.manager PUT:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf handleSuccessResponse:responseObject];
                 
@@ -236,7 +227,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             break;
         case API_DELET:
         {
-            [self.manager DELETE:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.manager DELETE:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf handleSuccessResponse:responseObject];
                 
@@ -251,7 +242,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             break;
         case API_PATH_GET:
         {
-            [self.manager PATCH:url parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.manager PATCH:url parameters:dic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 __strong typeof(weakSelf) strongSelf = weakSelf;
                 [strongSelf handleSuccessResponse:responseObject];
                 
@@ -269,6 +260,11 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
     }
 }
 
+/**
+ 网络数据处理
+
+ @param responseObj response
+ */
 - (void)handleSuccessResponse:(id)responseObj {
     if (responseObj && [responseObj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *obj = [responseObj copy];

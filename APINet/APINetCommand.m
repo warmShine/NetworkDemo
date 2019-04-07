@@ -10,4 +10,12 @@
 
 @implementation APINetCommand
 
+
+/** 子类重写网络挂载器 */
+- (void)APINetConfig:(id<APIParamsProtocol>)config {
+    
+}
+
+
+
 @end

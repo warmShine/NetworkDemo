@@ -7,6 +7,7 @@
 //
 
 #import "FirstVC.h"
+#import "APINetManager.h"
 
 @interface FirstVC ()
 
@@ -17,11 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [API APIRequest:@"" param:nil success:^(long code, NSString * _Nonnull message, id  _Nonnull data) {
-//        NSLog(@"message = %@ data = %@",message,data);
-//    } fail:^(long code, NSString * _Nonnull message) {
-//        NSLog(@"message = %@",message);
-//    }];
+    [APINetManager APIRequestPath:@"" param:nil success:^(long code, NSString * _Nonnull message, id  _Nonnull data) {
+        NSLog(@"message = %@ data = %@",message,data);
+    } fail:^(long code, NSString * _Nonnull message) {
+        NSLog(@"message = %@",message);
+    }];
+
 //    [API2 APIRequest:@"" param:nil success:^(long code, NSString * _Nonnull message, id  _Nonnull data) {
 //        NSLog(@"message1 = %@ data1 = %@",message,data);
 //    } fail:^(long code, NSString * _Nonnull message) {
