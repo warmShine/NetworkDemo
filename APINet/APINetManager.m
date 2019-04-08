@@ -49,10 +49,10 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
 /**
  设置网络配置器
 
- @param config 网络配置器
  */
-- (void)setAPINetConfig:(id<APIParamsProtocol>)config{
-    self.netConfig = config;
+- (id<APIParamsProtocol>)APINetConfig {
+    //需要子类重写
+    return nil;
 }
 
 /**
@@ -150,7 +150,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             }
         }
     }];
-    NSString *baseUrl = self.netConfig.baseUrl;
+    NSString *baseUrl = [self APINetConfig].baseUrl;
     NSMutableString *url = [baseUrl mutableCopy];
     if ([baseUrl hasSuffix:@"/"]) {
         if ([path hasPrefix:@"/"]) {
@@ -166,7 +166,7 @@ static NSString *const networkError = @"无网络，请检查设备网络连接"
             [url appendFormat:@"/%@",path];
         }
     }
-    NSMutableDictionary *dic = [[self.netConfig requestParams:path] mutableCopy];
+    NSMutableDictionary *dic = [[[self APINetConfig] requestParams:path] mutableCopy];
     if (params) {
         [dic addEntriesFromDictionary:params];
     }

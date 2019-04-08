@@ -7,7 +7,7 @@
 //
 
 #import "FirstVC.h"
-#import "APINetManager.h"
+#import "APICommand.h"
 
 @interface FirstVC ()
 
@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [APINetManager APIRequestPath:@"" param:nil success:^(long code, NSString * _Nonnull message, id  _Nonnull data) {
+    [APICommand APIRequestPath:@"/zaker/ntptime.php" param:nil success:^(long code, NSString * _Nonnull message, id  _Nonnull data) {
         NSLog(@"message = %@ data = %@",message,data);
     } fail:^(long code, NSString * _Nonnull message) {
         NSLog(@"message = %@",message);

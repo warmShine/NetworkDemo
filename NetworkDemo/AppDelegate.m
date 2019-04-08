@@ -21,8 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [self setNetworkConfig];
-    
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     FirstVC *fvc = [[FirstVC alloc]init];
@@ -35,14 +33,6 @@
     
     
     return YES;
-}
-
-- (void)setNetworkConfig {
-    APINetConfig *config1 = [[APINetConfig alloc]initWithBaseUrl:@"https://www.baidu.com"];
-//    APINetConfig *config2 = [[APINetConfig alloc]initWithBaseUrl:@"https://www.news.baidu.com"];
-    [[APINetManager sharedInstance] setNetConfig:config1];
-//    [[API2 sharedInstance] setNetConfig:config2];
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -50,8 +50,6 @@ typedef void(^ResponseFailed)(long code, NSString *message);
 @property (nonatomic, copy) ResponseFinished responseSuccessBlock;
 @property (nonatomic, copy) ResponseFailed responseFailBlock;
 
-@property (nonatomic, strong) id<APIParamsProtocol> netConfig;
-
 
 /* method */
 
@@ -59,7 +57,7 @@ typedef void(^ResponseFailed)(long code, NSString *message);
 
 - (NSTimeInterval)requestTimeoutInterval;/*超时时间*/
 
-- (void)setAPINetConfig:(id<APIParamsProtocol>)config;/*挂载配置器*/
+- (id<APIParamsProtocol>)APINetConfig;/*挂载配置器*/
 
 
 
